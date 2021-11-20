@@ -8,12 +8,11 @@
       "ESNext"
     ],
     "sourceMap": false,
-    "outDir": "dist",
+    "outDir": "./dist/javascript",
     "strict": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
@@ -21,7 +20,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "removeComments": true,
-    "rootDir": "./",
+    "rootDir": "./src/typescript",
     "baseUrl": "./",
     "paths": {}
   },
