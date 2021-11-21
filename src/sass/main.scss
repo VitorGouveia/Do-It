@@ -1,0 +1,19 @@
+/* MAIN */
+
+@import "./base";
+@import "./mixins";
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  font-size: useClamp(56);
+}
+
+@include useMedia(small) {
+  body {
+    background: red;
+  }
+}

@@ -2,14 +2,14 @@
   "name": "do-it",
   "version": "0.0.1",
   "description": "Todo App",
-  "main": "dist/index.js",
+  "main": "dist/js/index.js",
   "repository": "https://github.com/VitorGouveia/do-it.git",
   "author": "VitorGouveia <vitorneves.gouveia10@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
     "dev:typescript": "tsc --watch",
-    "dev:sass": "sass --watch --no-source-map ./src/sass/index.scss ./dist/css/index.css",
+    "dev:sass": "sass --watch --no-source-map ./src/sass/main.scss ./dist/css/index.css",
     "dev": "npm-run-all -p dev:*",
     "build:typescript": "tsc",
     "build:sass": "sass ./src/sass/index.scss ./dist/src/css/index.css",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "parcel": "^2.0.1",
+    "purgecss": "^4.0.3",
     "sass": "^1.43.4",
     "sucrase": "^3.20.3",
     "typescript": "^4.5.2"

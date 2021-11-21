@@ -1,0 +1,44 @@
+/* MAIN */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE */
+/* MIXINS */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  font-size: clamp(1.4rem, 0.9625rem + 2.1875vw, 3.5875rem);
+}
+
+/*
+  BREAKPOINTS:
+  sm: 425px
+  md: 768px
+  lg: 992px
+  xl: 1200px
+*/
+@media only screen and (min-width: 26.5625rem) {
+  body {
+    background: red;
+  }
+}
