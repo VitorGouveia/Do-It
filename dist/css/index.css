@@ -33,11 +33,19 @@ ul {
 */
 @media only screen and (min-width: 16.875rem) {
   body {
-    background: var(--color-red-200);
     display: grid;
     grid-template-areas: ". . ." ". card ." ". . .";
     grid-template-columns: 5% 90% 5%;
     grid-template-rows: 10% 80% 10%;
+  }
+  body[data-theme=red] {
+    background: var(--color-red-200);
+  }
+  body[data-theme=yellow] {
+    background: var(--color-yellow-200);
+  }
+  body[data-theme=green] {
+    background: var(--color-green-200);
   }
   body .todo-container {
     display: flex;

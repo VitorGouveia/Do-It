@@ -2,7 +2,17 @@
 
 @include useMedia(small) {
   body {
-    background: var(--color-red-200);
+    &[data-theme="red"] {  
+      background: var(--color-red-200);
+    }
+
+    &[data-theme="yellow"] {  
+      background: var(--color-yellow-200);
+    }
+
+    &[data-theme="green"] {  
+      background: var(--color-green-200);
+    }
     
     display: grid;
     grid-template-areas:
