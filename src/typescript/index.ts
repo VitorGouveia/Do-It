@@ -1,23 +1,13 @@
+import { Modal } from "./modal.js";
 import { PickTheme, Theme } from "./theme.js";
+import { Todo } from "./todo.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const modalButton: HTMLElement = document.querySelector(".modal-button")!
-  const XButton: HTMLElement = document.querySelector(".close")!
-  const modal: HTMLElement = document.querySelector(".modal")!
-  
-  const hideModal = () => modal.style.display = "none";
-  
-  modalButton.onclick = () => {
-    modal.style.display = "block"
-  }
-  
-  XButton.onclick = () => hideModal();
-  
-  window.onclick = ({ target }) => {
-    if (target == modal) {
-      hideModal();
-    }
-  }
+  /* initializes Modal */
+  new Modal();
+
+  /* initializes Todo */
+  new Todo();
 
   const localTheme = localStorage.getItem("theme");
   const theme = new Theme(localTheme as PickTheme);
