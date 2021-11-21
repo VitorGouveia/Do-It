@@ -8,8 +8,15 @@
 html, body {
   height: 100%;
   width: 100%;
+
+  font-family: "Rubik";
 }
 
 ul {
   list-style: none;
+}
+
+button, input, textarea {
+  outline: 0;
+  border: 0;
 }

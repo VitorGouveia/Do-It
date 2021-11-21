@@ -9,6 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { Theme } from "./theme.js";
 document.addEventListener("DOMContentLoaded", () => {
+    const modalButton = document.querySelector(".modal-button");
+    const XButton = document.querySelector(".close");
+    const modal = document.querySelector(".modal");
+    const hideModal = () => modal.style.display = "none";
+    modalButton.onclick = () => {
+        modal.style.display = "block";
+    };
+    XButton.onclick = () => hideModal();
+    window.onclick = ({ target }) => {
+        if (target == modal) {
+            hideModal();
+        }
+    };
     const localTheme = localStorage.getItem("theme");
     const theme = new Theme(localTheme);
     theme.cycle();
