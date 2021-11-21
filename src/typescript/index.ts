@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 if("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
-      const register = await navigator.serviceWorker.register("./pwa/serviceWorker.js")
+      const register = await navigator.serviceWorker.register("./serviceWorker.js")
       
       console.log(register)
     } catch (error) {
