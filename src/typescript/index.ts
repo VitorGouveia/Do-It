@@ -1,3 +1,12 @@
+import { PickTheme, Theme } from "./theme.js"
+
+document.addEventListener("DOMContentLoaded", () => {
+  const localTheme = localStorage.getItem("theme")
+  const theme = new Theme(localTheme as PickTheme)
+
+  theme.cycle()
+})
+
 if("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
