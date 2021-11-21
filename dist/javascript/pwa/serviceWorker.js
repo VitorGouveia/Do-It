@@ -1,27 +1,22 @@
 "use strict";
-self.addEventListener("install", () => {
+const cached_files = [
+    "./",
+    "./dist/css/index.css",
+    "./dist/javascript/index.js",
+    "./dist/javascript/modal.js",
+    "./dist/javascript/theme.js",
+    "./dist/javascript/todo.js",
+    "./dist/javascript/pwa/serviceWorker.js",
+];
+self.addEventListener("install", (event) => {
     console.log("installing");
+    event.waitUntil(caches.open("static").then(cache => {
+        return cache.addAll(cached_files);
+    }));
 });
-self.addEventListener("activate", () => {
-    console.log("activating");
-});
-self.addEventListener("fetch", () => {
+self.addEventListener("fetch", (event) => {
     console.log("fetching");
-});
-window.addEventListener("beforeinstallprompt", e => {
-    console.log("before install");
-    e.preventDefault();
-});
-navigator.serviceWorker.ready.then(registration => {
-    if (!registration.pushManager) {
-        console.log("no notifications support");
-        return false;
-    }
-    registration.pushManager.subscribe({
-        userVisibleOnly: true
-    }).then(subscription => {
-        console.log("subscribed");
-    }).catch(error => {
-        console.log("error in subscription", error);
-    });
+    event.respondWith(caches.match(event.request).then(response => {
+        return response || fetch(event.request);
+    }));
 });

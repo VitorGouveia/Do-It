@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const register = yield navigator.serviceWorker.register("./pwa/serviceWorker.js");
+            const register = yield navigator.serviceWorker.register("./serviceWorker.js");
             console.log(register);
         }
         catch (error) {
