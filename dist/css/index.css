@@ -67,16 +67,43 @@ ul {
     font-size: clamp(1.6rem, 1.1909090909rem + 2.4242424242vw, 4.1rem);
   }
   body .todo-container ul {
+    display: flex;
+    flex-direction: column;
     padding: 32px 16px;
+    width: 100%;
+    height: 100%;
+    position: relative;
   }
   body .todo-container ul li {
     font-family: "Rubik";
     display: flex;
     align-items: center;
   }
+  body .todo-container ul li[data-button] {
+    align-self: center;
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 16px);
+  }
+  body .todo-container ul li[data-button] button {
+    width: 100%;
+    padding: 16px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+    border-radius: 12px;
+    color: var(--color-red-200);
+    background: var(--color-yellow-100);
+    border: 3px dashed var(--color-black-100);
+    transition: all 200ms;
+  }
+  body .todo-container ul li[data-button] button:hover {
+    filter: brightness(110%);
+  }
   body .todo-container ul li label {
     cursor: pointer;
     font-size: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+    user-select: none;
   }
   body .todo-container ul li input {
     cursor: pointer;
