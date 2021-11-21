@@ -181,6 +181,10 @@
             &:checked::after {
               transform: scale(1.2);
             }
+            
+            &:checked {
+              opacity: 0.6;
+            }
 
             &::before, &::after {
               content: "";
@@ -210,6 +214,11 @@
               background: var(--color-yellow-100);
               clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
             }
+          }
+
+          input:checked + label {
+            opacity: 0.6;
+            text-decoration: line-through;
           }
         }
       }
