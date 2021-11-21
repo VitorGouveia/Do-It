@@ -1,17 +1,54 @@
 @use "../mixins";
+@use "../components";
 
 @include useMedia(small) {
   body {
-    &[data-theme="red"] {  
-      background: var(--color-red-200);
+    &[data-theme="red"] {
+      $primary: var(--color-red-200);
+      background: $primary;
+      .todo-container {
+        ul li {
+          &[data-button] button {
+            color: $primary;
+          }
+
+          input:before {
+            box-shadow: inset 1em 1em $primary;
+          }
+        }
+      }
     }
 
-    &[data-theme="yellow"] {  
-      background: var(--color-yellow-200);
+    &[data-theme="yellow"] {
+      $primary: var(--color-yellow-200);
+      background: $primary;
+      .todo-container {
+        ul li {
+          &[data-button] button {
+            color: $primary;
+          }
+
+          input:before {
+            box-shadow: inset 1em 1em $primary;
+          }
+        }
+      }
     }
 
     &[data-theme="green"] {  
-      background: var(--color-green-200);
+      $primary: var(--color-green-200);
+      background: $primary;
+      .todo-container {
+        ul li {
+          &[data-button] button {
+            color: $primary;
+          }
+
+          input:before {
+            box-shadow: inset 1em 1em $primary;
+          }
+        }
+      }
     }
     
     display: grid;
@@ -30,7 +67,7 @@
       
       color: var(--color-black-200);
       
-      padding: 16px 0;
+      padding: 16px;
       
       grid-area: card;
       background: var(--color-yellow-100);
@@ -39,10 +76,6 @@
       box-shadow: 8px 8px var(--color-black-200);
       
       border-radius: 24px;
-      -webkit-border-radius: 24px;
-      -moz-border-radius: 24px;
-      -ms-border-radius: 24px;
-      -o-border-radius: 24px;
       
       header {
         display: flex;
@@ -54,7 +87,6 @@
         padding-bottom: 16px;
         
         h1 {
-          font-family: "Rubik";
           font-size: useClamp(64);
         }
         
@@ -72,9 +104,6 @@
         
         position: relative;
         li {
-          
-          font-family: "Rubik";
-          
           display: flex;
           align-items: center;
 

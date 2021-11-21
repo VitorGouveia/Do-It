@@ -32,11 +32,29 @@
       </li>
 
       <li data-button="true">
-        <button class="dotted">
+        <button class="dotted modal-button">
           Add todo
         </button>
       </li>
     </ul>
   </main>
+  
+  <div class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      <form action="">
+        <div class="input-wrapper">
+          <label for="todo">Describe your todo</label>
+          <input id="todo" type="text" name="todo" placeholder="i need to do the dishes..." />
+        </div>
+        
+        <footer>
+          <button type="reset">Resetar</button>
+          <button type="submit">Confirmar</button>
+        </footer>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,10 +1,28 @@
-import { PickTheme, Theme } from "./theme.js"
+import { PickTheme, Theme } from "./theme.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const localTheme = localStorage.getItem("theme")
-  const theme = new Theme(localTheme as PickTheme)
+  const modalButton: HTMLElement = document.querySelector(".modal-button")!
+  const XButton: HTMLElement = document.querySelector(".close")!
+  const modal: HTMLElement = document.querySelector(".modal")!
+  
+  const hideModal = () => modal.style.display = "none";
+  
+  modalButton.onclick = () => {
+    modal.style.display = "block"
+  }
+  
+  XButton.onclick = () => hideModal();
+  
+  window.onclick = ({ target }) => {
+    if (target == modal) {
+      hideModal();
+    }
+  }
 
-  theme.cycle()
+  const localTheme = localStorage.getItem("theme");
+  const theme = new Theme(localTheme as PickTheme);
+
+  theme.cycle();
 })
 
 if("serviceWorker" in navigator) {
