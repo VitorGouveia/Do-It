@@ -52,18 +52,59 @@
       }
       
       ul {
+        display: flex;
+        flex-direction: column;
+
         padding: 32px 16px;
+
+        width: 100%;
+        height: 100%;
         
+        position: relative;
         li {
           
           font-family: "Rubik";
           
           display: flex;
           align-items: center;
+
+
+          &[data-button] {
+            align-self: center;
+
+            position: absolute;
+
+            bottom: 0;
+
+            
+            width: calc(100% - 16px);
+            button {
+              width: 100%;
+              padding: 16px 16px;
+
+              cursor: pointer;
+              
+              font-weight: bold;
+              font-size: useClamp(32);
+
+              border-radius: 12px;
+              
+              color: var(--color-red-200);
+              background: var(--color-yellow-100);
+              border: 3px dashed var(--color-black-100);
+
+              transition: all 200ms;
+              
+              &:hover {
+                filter: brightness(110%);
+              }
+            }
+          }
           
           label {
             cursor: pointer;
             font-size: useClamp(32);
+            user-select: none;
           }
           
           input {
