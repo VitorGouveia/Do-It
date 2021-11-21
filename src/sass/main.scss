@@ -1,19 +1,7 @@
-/* MAIN */
+@import "./base/reset";
 
 @import "./base";
 @import "./mixins";
+@import "./abstracts/colors-props";
 
-html, body {
-  height: 100%;
-  width: 100%;
-}
-
-p {
-  font-size: useClamp(56);
-}
-
-@include useMedia(small) {
-  body {
-    background: red;
-  }
-}
+@import "./layout";
