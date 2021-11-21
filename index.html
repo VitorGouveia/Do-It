@@ -9,6 +9,10 @@
   <meta name="keywords" content="todo, js, open source">
   <meta name="description" content="A todo app with pure js">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&display=swap">
+
   <title>Do-It</title>
 
   <link rel="stylesheet" href="./dist/css/index.css">
@@ -16,6 +20,23 @@
   <script defer src="./dist/javascript/index.js"></script>
 </head>
 <body>
-  <p>hello</p>
+  <main class="todo-container">
+    <header>
+      <h1>Things to do</h1>
+    </header>
+
+    <ul>
+      <li>
+        <input id="some" type="checkbox" />
+        <label for="some">Select something</label>
+      </li>
+
+      <li>
+        <button class="dotted">
+          Add todo
+        </button>
+      </li>
+    </ul>
+  </main>
 </body>
 </html>
