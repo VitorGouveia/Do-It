@@ -20,6 +20,12 @@
 
 ---
 
+### Tecnologies
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /> <br>
+<img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" /> <br>
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> <br>
+
+
 ### 🛠️ Adjusts and Updates
 
 The project is still in development and the next updates will be:
@@ -80,3 +86,10 @@ I thank everybody that colaborated to this project:
 ## 📝 License
 
 This project is under the MIT license. See the [license](LICENSE.md) file for mode details.
+
+---
+
+# Contact
+<a href="https://github.com/VitorGouveia">
+  <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=light" />
+</a>
