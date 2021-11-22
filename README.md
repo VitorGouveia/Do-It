@@ -3,7 +3,8 @@
   <img width="20" src=".github/logo.png" /> 
 </h1>
 
-<div align="center">
+<div align="center">![2b06](https://user-images.githubusercontent.com/61664367/142806151-1cbbe15b-148a-4d05-b3bf-f1f7c83e8f3e.png)
+
   <img src="https://img.shields.io/github/repo-size/vitorgouveia/do-it?style=for-the-badge" />
   <img src="https://img.shields.io/github/languages/count/vitorgouveia/do-it?style=for-the-badge" />
 </div>
@@ -80,5 +81,3 @@ I thank everybody that colaborated to this project:
 ## 📝 License
 
 This project is under the MIT license. See the [license](LICENSE.md) file for mode details.
-
-[⬆ Go to the top](#do-it)<br>
