@@ -1,6 +1,6 @@
 {
   "name": "do-it",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Do-It is a Todo App so you can organize your tasks.",
   "main": "dist/js/index.js",
   "repository": "https://github.com/VitorGouveia/do-it.git",
