@@ -131,6 +131,10 @@ body {
             font-size: useClamp(40);
             user-select: none;
           }
+          
+          input:checked + label {
+            text-decoration: line-through;
+          }
 
           input {
             cursor: pointer;
