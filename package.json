@@ -1,7 +1,7 @@
 {
   "name": "do-it",
   "version": "0.0.1",
-  "description": "Todo App",
+  "description": "Do-It is a Todo App so you can organize your tasks.",
   "main": "dist/js/index.js",
   "repository": "https://github.com/VitorGouveia/do-it.git",
   "author": "VitorGouveia <vitorneves.gouveia10@gmail.com>",
@@ -11,18 +11,18 @@
     "dev:typescript": "tsc --watch",
     "dev:sass": "sass --watch --no-source-map ./src/sass/main.scss ./dist/css/index.css",
     "dev": "npm-run-all -p dev:*",
-    "build:typescript": "tsc",
-    "build:sass": "sass ./src/sass/index.scss ./dist/src/css/index.css",
+    "build:typescript": "sucrase src/typescript -d dist/javascript typescript",
+    "build:sass": "sass ./src/sass/main.scss ./dist/css/index.css",
     "build": "npm-run-all -s build:*",
-    "start": "parcel index.html",
+    "start": "serve .",
     "postinstall": "npm run dev"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "parcel": "^2.0.1",
-    "purgecss": "^4.0.3",
+    "release-it": "^14.11.8",
     "sass": "^1.43.4",
-    "sucrase": "^3.20.3",
+    "serve": "^13.0.2",
     "typescript": "^4.5.2"
   }
 }

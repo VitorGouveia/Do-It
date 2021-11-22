@@ -1,7 +1,7 @@
 {
   "short_name": "Do-It",
   "name": "Do-It notes app",
-  "description": "An todo app",
+  "description": "Do-It is a Todo App so you can organize your tasks.",
   "start_url": ".",
   "scope": "/",
   "background_color": "#f4d99a",
