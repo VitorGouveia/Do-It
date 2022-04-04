@@ -9,7 +9,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "dev": "parcel ./index.html",
-    "build": "parcel build ./index.html"
+    "build": "parcel build ./index.html --public-url ./"
   },
   "dependencies": {
     "@swc/helpers": "^0.3.8",
