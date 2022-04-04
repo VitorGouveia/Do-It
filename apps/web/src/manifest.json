@@ -1,0 +1,26 @@
+{
+  "short_name": "Do-It",
+  "name": "Do-It notes app",
+  "description": "Do-It is a Todo App so you can organize your tasks.",
+  "start_url": "/",
+  "scope": "./",
+  "id": "bruh",
+  "background_color": "#f4d99a",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#f4d99a",
+  "icons": [
+    {
+      "src": "./public/assets/logo_384.svg",
+      "sizes": "384x384"
+    },
+    {
+      "src": "./public/assets/logo_256.svg",
+      "sizes": "256x256"
+    },
+    {
+      "src": "./public/assets/logo_96.svg",
+      "sizes": "96x96"
+    } 
+  ]
+}
