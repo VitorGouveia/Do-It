@@ -2,11 +2,6 @@ const CACHE = {
   name: "DoIt",
   urls: [
     "/",
-    "/dist/css/index.css",
-    "/dist/javascript/index.js",
-    "/dist/javascript/modal.js",
-    "/dist/javascript/theme.js",
-    "/dist/javascript/todo.js",
   ]
 }
 
