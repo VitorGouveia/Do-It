@@ -1,6 +1,6 @@
-import { Modal } from "./modal.js";
-import { PickTheme, Theme } from "./theme.js";
-import { Todo } from "./todo.js";
+import { Modal } from "./modal";
+import { PickTheme, Theme } from "./theme";
+import { Todo } from "./todo";
 
 document.addEventListener("DOMContentLoaded", () => {
   /* initializes Modal */
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 if("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
-      const register = await navigator.serviceWorker.register("./serviceWorker.js")
+      const register = await navigator.serviceWorker.register(new URL("../../serviceWorker.js", import.meta.url))
       
       console.log(register)
     } catch (error) {
