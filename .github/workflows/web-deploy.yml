@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - '.github/workflows/web-deploy.yml'
-      - 'apps/web/**'
+      - 'apps/**'
 
 jobs:
   build:
@@ -30,12 +30,12 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Build @notely/web
-        working-directory: ./apps/web
+      - name: Build @notely/v1
+        working-directory: ./apps/v1
         run: yarn build
 
       - name: Add .nojekyll file
-        working-directory: ./apps/web
+        working-directory: ./apps/v1
         run: touch ./dist/.nojekyll
 
       - name: Deploy
