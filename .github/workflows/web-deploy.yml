@@ -44,6 +44,7 @@ jobs:
         working-directory: ./apps
         run: |
           mkdir gh-pages
+          mkdir gh-pages/old
           cp -r ./v2/dist/* ./gh-pages
           cp -r ./v1/dist/* ./gh-pages/old
 
