@@ -9,7 +9,8 @@ import Document, {
 export default class AppDocument extends Document<DocumentProps> {
   render() {
     return (
-      <Html data-theme="omni">
+      // fallback theme if the context for any reason doesn't work
+      <Html>
         <Head></Head>
 
         <body>
