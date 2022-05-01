@@ -32,7 +32,6 @@ jobs:
 
       - name: Build @notely/v1
         working-directory: ./apps/v1
-        uses: borales/actions-yarn@v2.3.0
         run: yarn build
 
       - name: Build @notely/v2
