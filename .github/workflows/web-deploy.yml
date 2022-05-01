@@ -34,7 +34,7 @@ jobs:
 
       - name: Build @notely/v2
         working-directory: ./apps/v2
-        run: yarn build
+        run: yarn gh-build
 
       - name: Export @notely/v2
         working-directory: ./apps/v2
