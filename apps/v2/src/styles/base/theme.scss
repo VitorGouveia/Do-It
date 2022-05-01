@@ -1,0 +1,163 @@
+/* 
+  the point of this file is to
+  store all variables related to themes
+
+  the theme variables will be dynamic,
+  so they can be tweaked by the user
+
+  i'll define the base variables that the user will be able to modify
+*/
+
+$font-sizes: (
+  desktop: (
+    heading-1: 64px,
+    heading-2: 42px,
+    heading-3: 20px,
+    button: 32px,
+    paragraph: 24px,
+  ),
+  tablet: (
+    heading-1: 48px,
+    heading-2: 32px,
+    heading-3: 20px,
+    button: 24px,
+    paragraph: 20px,
+  ),
+  mobile: (
+    heading-1: 48px,
+    heading-2: 24px,
+    heading-3: 20px,
+    button: 20px,
+    paragraph: 20px,
+  )
+);
+
+$themes: (
+  colorblind: (
+    heading: hsl(0, 0%, 90%),
+    paragraph: hsl(0, 0%, 70%),
+    background: hsl(0, 0%, 10%),
+    button-background: hsl(0, 0%, 55%),
+    button-background-shiny: hsl(0, 0%, 65%),
+  ),
+  light: (
+    heading: hsl(210, 2%, 20%),
+    paragraph: hsl(210, 1%, 33%),
+    background: hsl(180, 100%, 100%),
+    button-background: hsl(232, 81%, 66%),
+    button-background-shiny: hsl(232, 81%, 75%),
+  ),
+  omni: (
+    heading: hsl(240, 2%, 90%),
+    paragraph: hsl(240, 1%, 70%),
+    background: hsl(255, 21%, 11%),
+    button-background: hsl(255, 81%, 55%),
+    button-background-shiny: hsl(255, 81%, 65%),
+  ),
+  snow-storm: (
+    heading: #252F41,
+    paragraph: #3D4D6C,
+    background: #D8DEE9,
+    button-background: #859DCA,
+    button-background-shiny: #8CB0F3,
+  ),
+  polar-night: (
+    heading: #E1E4EA,
+    paragraph: #9AA2B2,
+    background: #2E3440,
+    button-background: #5E81AC,
+    button-background-shiny: #86A0C1,
+  ),
+  dracula: (
+    heading: #F8F8F2,
+    paragraph: #CDCDCB,
+    background: #282A36,
+    button-background: #7A26F3,
+    button-background-shiny: #9E60F6,
+  ),
+);
+
+:root {
+  /* 
+    FONT SIZE VARIABLES
+  */
+  @each $breakpoint, $fonts in $font-sizes {
+    @each $font, $value in $fonts {
+      --#{$font}-font-size-#{$breakpoint}: #{$value};
+    }
+  }
+
+  // /* 
+  //   THEME VARIABLES
+  // */
+
+  // @each $theme, $colors in $themes {
+  //   @each $key, $value in $colors {
+  //     --theme-#{$theme}-#{$key}: #{$value};
+  //   }
+  // }
+}
+
+@property --button-gradient-base {
+  syntax: '<color>';
+  initial-value: #0f0;
+  inherits: false;
+}
+
+@property --button-gradient-shiny {
+  syntax: '<color>';
+  initial-value: rgb(40, 190, 145);
+  inherits: false;
+}
+
+@each $theme, $colors in $themes {
+  html[data-theme="#{$theme}"] {
+    @each $key, $value in $colors {
+      @if $key == "button-background" {
+        button {
+          --button-gradient-base: #{$value};
+        }
+      } @else {
+      }
+
+      @if $key == "button-background-shiny" {
+        button {
+          --button-gradient-shiny: #{$value};
+        }
+      } @else {
+      }
+
+      --#{$key}: #{$value};
+    }
+  }
+}
+
+// background: linear-gradient(90deg, #5E30E9 0%, #825EEE 28.65%, #5E30E9 72.4%);
+@property --button-background-position {
+  syntax: '<percentage>';
+  initial-value: 28%;
+  inherits: false;
+}
+
+button {
+  background: linear-gradient(
+    90deg,
+    var(--button-gradient-base) 0%,
+    var(--button-gradient-shiny) var(--button-background-position),
+    var(--button-gradient-base) 72%,
+  );
+
+  transition: 
+    --button-gradient-base 700ms ease,
+    --button-gradient-shiny 700ms ease,
+    --button-background-position 200ms ease
+  ;
+
+  &:hover {
+    --button-background-position: 50%;
+  }
+}
+
+* {
+  transition: all 700ms ease;
+}
