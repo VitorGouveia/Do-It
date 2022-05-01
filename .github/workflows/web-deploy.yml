@@ -5,8 +5,8 @@ on:
     branches:
       - master
     paths:
-      - '.github/workflows/web-deploy.yml'
-      - 'apps/**'
+      - ".github/workflows/web-deploy.yml"
+      - "apps/**"
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: "yarn"
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -34,12 +34,27 @@ jobs:
         working-directory: ./apps/v1
         run: yarn build
 
+      - name: Build @notely/v2
+        working-directory: ./apps/v2
+        run: yarn build
+
+      - name: Export @notely/v2
+        working-directory: ./apps/v2
+        run: yarn export
+
+      - name: Move all projects into a common folder to deploy
+        working-directory: ./apps
+        run: |
+          mkdir gh-pages
+          cp ./v2/dist/* ./gh-pages
+          cp ./v1/dist/* ./gh-pages/old
+
       - name: Add .nojekyll file
-        working-directory: ./apps/v1
-        run: touch ./dist/.nojekyll
+        working-directory: ./apps
+        run: touch ./gh-pages/.nojekyll
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
-          folder: ./apps/web/dist
+          folder: ./apps/gh-pages
