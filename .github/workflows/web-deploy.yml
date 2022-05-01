@@ -44,8 +44,8 @@ jobs:
         working-directory: ./apps
         run: |
           mkdir gh-pages
-          cp ./v2/dist/* ./gh-pages
-          cp ./v1/dist/* ./gh-pages/old
+          cp -r ./v2/dist/* ./gh-pages
+          cp -r ./v1/dist/* ./gh-pages/old
 
       - name: Add .nojekyll file
         working-directory: ./apps
