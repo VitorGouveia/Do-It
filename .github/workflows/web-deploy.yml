@@ -33,20 +33,15 @@ jobs:
       - name: Build @notely/v1
         working-directory: ./apps/v1
         uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: build
+        run: yarn build
 
       - name: Build @notely/v2
         working-directory: ./apps/v2
-        uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: build
+        run: yarn build
 
       - name: Export @notely/v2
         working-directory: ./apps/v2
-        uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: export
+        run: yarn export
 
       - name: Move all projects into a common folder to deploy
         working-directory: ./apps
