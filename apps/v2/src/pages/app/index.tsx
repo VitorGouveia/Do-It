@@ -10,8 +10,7 @@ import { NotesContext } from "../../context/notes";
 const App: NextPage = () => {
   const theme = useContextSelector(ThemeContext, (context) => context.theme);
 
-  const { getNotes, createNote, deleteNote } = useContext(NotesContext);
-  const notes = useMemo(() => getNotes(), [getNotes]);
+  const { notes, createNote, deleteNote } = useContext(NotesContext);
 
   const notesWithFormattedDates = useMemo(() => {
     return notes.map(({ createdAt, ...note }) => {

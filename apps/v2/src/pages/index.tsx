@@ -34,7 +34,6 @@ const Home: NextPage = () => {
     }
 
     const reloadCallback = () => {
-      console.log("reloadeddwadawdwadwadawdaw");
       localStorage.setItem("@notely:run-animation", "true");
     };
 

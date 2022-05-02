@@ -12,7 +12,7 @@ import { Temporal, Intl } from "@js-temporal/polyfill";
 import Link from "next/link";
 
 import { useTypeSafeRouter } from "../../hooks/use-type-safe-router";
-import { Note, NotesContext } from "../../context/notes";
+import { decrypt, Note, NotesContext } from "../../context/notes";
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -25,10 +25,7 @@ function pipeline<Type>(input: Type, ...methods: PipeFunction<Type>[]) {
 }
 
 const Note: NextPage = () => {
-  const getNotes = useContextSelector(
-    NotesContext,
-    (context) => context.getNotes
-  );
+  const notes = useContextSelector(NotesContext, (context) => context.notes);
   const editTitle = useContextSelector(
     NotesContext,
     (context) => context.editTitle
@@ -37,8 +34,6 @@ const Note: NextPage = () => {
     NotesContext,
     (context) => context.editText
   );
-
-  const notes = useMemo(() => getNotes(), [getNotes]);
 
   const router = useTypeSafeRouter<{ slug: string }>(useRouter());
 
@@ -73,6 +68,11 @@ const Note: NextPage = () => {
   // current page note
   // the slug might also be an ID, so here i'm also searching for note with ID
   useEffect(() => {
+    // i 100% need a loading screen in here
+    if (!router.query.slug) {
+      return;
+    }
+
     const [currentNote] = notes.filter(
       (note) => note.slug === router.query.slug || note.id === router.query.slug
     );
@@ -85,8 +85,7 @@ const Note: NextPage = () => {
     setNote(currentNote);
     setTitle(currentNote?.title || "");
     setText(currentNote?.text || "");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router, router.query.slug]);
+  }, [notes, router, router.query.slug]);
 
   const formattedDate = useMemo(() => {
     if (note) {
