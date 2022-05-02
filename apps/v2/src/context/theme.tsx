@@ -64,7 +64,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = memo(
 
     useEffect(() => {
       setDocumentTheme(theme);
-    }, [setDocumentTheme, theme]);
+      setStorageTheme(theme);
+    }, [setDocumentTheme, setStorageTheme, theme]);
 
     return (
       <ThemeContext.Provider

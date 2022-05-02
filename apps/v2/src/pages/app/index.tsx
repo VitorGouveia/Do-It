@@ -10,7 +10,8 @@ import { NotesContext } from "../../context/notes";
 const App: NextPage = () => {
   const theme = useContextSelector(ThemeContext, (context) => context.theme);
 
-  const { notes, createNote, deleteNote } = useContext(NotesContext);
+  const { getNotes, createNote, deleteNote } = useContext(NotesContext);
+  const notes = useMemo(() => getNotes(), [getNotes]);
 
   const notesWithFormattedDates = useMemo(() => {
     return notes.map(({ createdAt, ...note }) => {
@@ -19,7 +20,7 @@ const App: NextPage = () => {
         timeZone: new Temporal.TimeZone("America/Sao_Paulo"),
       });
 
-      const formattedDate = new Intl.DateTimeFormat("en-US", {
+      const formattedDate = new Intl.DateTimeFormat("pt-BR", {
         dateStyle: "long",
       }).format(date);
 
@@ -38,10 +39,10 @@ const App: NextPage = () => {
       <button onClick={() => createNote()}>new note</button>
 
       <ul>
-        {notesWithFormattedDates.map(({ id, title, formattedDate }) => (
+        {notesWithFormattedDates.map(({ id, title, slug, formattedDate }) => (
           <li key={id}>
             <div>
-              <Link href={`/app/${title || id}`}>
+              <Link href={`/app/${slug || id}`}>
                 <a>{title || id}</a>
               </Link>
             </div>
