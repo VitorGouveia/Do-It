@@ -78,13 +78,15 @@ export const NotesProvider: React.FC<NotesProviderProps> = memo(({ children }) =
     ) as NoteWithStringDate[];
 
     // Temporal.Instant when saved to localStorage become ISO dates, so im converting it back to Temporal.Instant
-    const notesWithConvertedDates = parsedLocalStorageNotes.map(({ title, slug, text, createdAt, ...note }) => ({
-      title: decrypt(title || ""),
-      slug: decrypt(slug || ""),
-      text: decrypt(text),
-      createdAt: Temporal.Instant.from(createdAt),
-      ...note
-    }));
+    const notesWithConvertedDates = parsedLocalStorageNotes.map(
+      ({ title, slug, text, createdAt, ...note }) => ({
+        title: title ? decrypt(title) : undefined,
+        slug: slug ? decrypt(slug) : undefined,
+        text: decrypt(text),
+        createdAt: Temporal.Instant.from(createdAt),
+        ...note,
+      })
+    );
 
     setNotes(notesWithConvertedDates);
   }, []);
@@ -96,52 +98,72 @@ export const NotesProvider: React.FC<NotesProviderProps> = memo(({ children }) =
       createdAt: Temporal.Now.instant(),
     };
 
-    setNotes((notes) => [note, ...notes]);
+    setNotes((notes) => [{ ...note, text: "" }, ...notes]);
 
     localStorage.setItem("@notely:notes", JSON.stringify([note, ...notes]));
   }, [notes]);
 
-  const editTitle = useCallback(
-    (noteId: string, title: string) => {
-      const modifiedNotes = notes.map((note) => {
-        if (noteId === note.id) {
-          return {
-            ...note,
-            // too lazy to do pipe fn in here :/
-            slug: encrypt(slugify(title)),
-            title: encrypt(title),
-          };
-        }
+  // prettier-ignore
+  const editTitle = useCallback((noteId: string, title: string) => {
+    const selectedNote = notes.find(note => note.id === noteId)
 
-        return note;
-      });
+    if(!selectedNote) {
+      return
+    }
 
-      setNotes(modifiedNotes);
+    const updatedNote = {
+      ...selectedNote,
+      title,
+      slug: slugify(title),
+    };
 
-      localStorage.setItem("@notely:notes", JSON.stringify(modifiedNotes));
-    },
-    [notes]
-  );
+    setNotes(notes => ([updatedNote, ...notes.filter(note => note.id !== noteId)]))
 
-  const editText = useCallback(
-    (noteId: string, text: string) => {
-      const modifiedNotes = notes.map((note) => {
-        if (noteId === note.id) {
-          return {
-            ...note,
-            text: encrypt(text),
-          };
-        }
+    localStorage.setItem(
+      "@notely:notes",
+      JSON.stringify([
+        { 
+          ...updatedNote,
+          title: encrypt(title),
+          slug: encrypt(slugify(title)),
+          text: encrypt(updatedNote.text)
+        },
+        ...notes.filter((note) => note.id !== noteId),
+      ])
+    );
+  }, [notes]);
 
-        return note;
-      });
+  // prettier-ignore
+  const editText = useCallback((noteId: string, text: string) => {
+    const selectedNote = notes.find((note) => note.id === noteId);
 
-      setNotes(modifiedNotes);
+    if (!selectedNote) {
+      return;
+    }
 
-      localStorage.setItem("@notely:notes", JSON.stringify(modifiedNotes));
-    },
-    [notes]
-  );
+    const updatedNote = {
+      ...selectedNote,
+      text
+    };
+
+    setNotes((notes) => ([
+      updatedNote,
+      ...notes.filter((note) => note.id !== noteId),
+    ]));
+
+    localStorage.setItem(
+      "@notely:notes",
+      JSON.stringify([
+        {
+          ...updatedNote,
+          text: encrypt(text),
+          title: updatedNote.title ? encrypt(updatedNote.title) : undefined,
+          slug: updatedNote.slug ? encrypt(slugify(updatedNote.slug)) : undefined,
+        },
+        ...notes.filter((note) => note.id !== noteId),
+      ])
+    );
+  }, [notes]);
 
   const deleteNote = useCallback(
     ({ id }: DeleteNoteProps) => {

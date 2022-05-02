@@ -83,9 +83,17 @@ const Note: NextPage = () => {
     }
 
     setNote(currentNote);
-    setTitle(currentNote?.title || "");
-    setText(currentNote?.text || "");
-  }, [notes, router, router.query.slug]);
+    setTitle(currentNote?.title ?? "");
+    setText(currentNote?.text ?? "");
+
+    // do NOT add 'notes' as a dependency of useEffect
+    /* it will break things
+      i update the notes state in the context everytime input state changes
+      so this function is going to be called again but things get out of sync
+      and we get a 404 page
+    */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.query.slug, router]);
 
   const formattedDate = useMemo(() => {
     if (note) {
