@@ -42,7 +42,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.16.3":
+"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.16.3":
   version: 7.17.9
   resolution: "@babel/runtime@npm:7.17.9"
   dependencies:
@@ -276,6 +276,7 @@ __metadata:
     crypto-js: ^4.1.1
     eslint: 8.14.0
     eslint-config-next: 12.1.5
+    inspx: ^0.0.1-alpha.6
     nanoid: ^3.3.3
     next: 12.1.5
     react: 18.1.0
@@ -1252,6 +1253,16 @@ __metadata:
   peerDependencies:
     "@parcel/core": ^2.5.0
   checksum: 82a1cf1c56e6ba0475721887fe2548edeb4adf2ee6f1b3ed0bc6d70fb37ffd5b55107b064170d00e771c576058ff89786cd2b2d26753cb96eff12151d96df18a
+  languageName: node
+  linkType: hard
+
+"@radix-ui/popper@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "@radix-ui/popper@npm:0.0.10"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    csstype: ^3.0.4
+  checksum: c53d2f4cbeb5192e0a0c99376ac71c3570b53a58fde461e18d84c423fda37dc8f2d8bc79c2d7e3eea0e10dbc6cd9f5047b6108e69ed8159cd155c2376e3d2e17
   languageName: node
   linkType: hard
 
@@ -2424,7 +2435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2":
+"csstype@npm:^3.0.2, csstype@npm:^3.0.4":
   version: 3.0.11
   resolution: "csstype@npm:3.0.11"
   checksum: 95e56abfe9ca219ae065acb4e43f61771a03170eed919127f558dfa168240867aba7629c8d98a201a0dd06d9a5ce82686f0570031c928516c61816adbc7c877f
@@ -3954,6 +3965,17 @@ __metadata:
     strip-ansi: ^5.1.0
     through: ^2.3.6
   checksum: 01a87cdbe74e7eb5ca770580f0d6bcad0269e6b0da97107aa9e2b37446a795aac63a63865d33410e964441499f9ac34a84c2e97c40d1abe2e57efc7f0d5b416d
+  languageName: node
+  linkType: hard
+
+"inspx@npm:^0.0.1-alpha.6":
+  version: 0.0.1-alpha.6
+  resolution: "inspx@npm:0.0.1-alpha.6"
+  dependencies:
+    "@radix-ui/popper": ^0.0.10
+  peerDependencies:
+    react: ">=16"
+  checksum: 48e468a4a7c4a470257c5348c07ca793abbab1214be68a7df3163243b3bc52aadac118c682e415d00650f0e1e719aa31c6ce2fb525095ef91012fc0f4d969249
   languageName: node
   linkType: hard
 

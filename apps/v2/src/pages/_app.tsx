@@ -7,6 +7,8 @@ import "../styles/main.scss";
 import { ThemeProvider } from "../context/theme";
 import { NotesProvider } from "../context/notes";
 
+import Inspect from "inspx";
+
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -22,7 +24,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return getLayout(
     <ThemeProvider defaultTheme="omni">
       <NotesProvider>
-        <Component {...pageProps} />
+        <Inspect>
+          <Component {...pageProps} />
+        </Inspect>
       </NotesProvider>
     </ThemeProvider>
   );
