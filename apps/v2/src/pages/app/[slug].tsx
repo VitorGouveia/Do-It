@@ -24,7 +24,7 @@ function pipeline<Type>(input: Type, ...methods: PipeFunction<Type>[]) {
   return methods.reduce((ac, cv) => cv(ac), input);
 }
 
-const Note: NextPage = () => {
+const NotePage: NextPage = () => {
   const notes = useContextSelector(NotesContext, (context) => context.notes);
   const editTitle = useContextSelector(
     NotesContext,
@@ -83,7 +83,7 @@ const Note: NextPage = () => {
     }
 
     setNote(currentNote);
-    setTitle(currentNote?.title ?? "");
+    setTitle(currentNote.title ?? "");
     setText(currentNote?.text ?? "");
 
     // do NOT add 'notes' as a dependency of useEffect
@@ -164,4 +164,4 @@ const Note: NextPage = () => {
   );
 };
 
-export default Note;
+export default NotePage;

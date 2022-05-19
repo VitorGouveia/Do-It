@@ -1,0 +1,36 @@
+.headerContainer {
+  width: 100%;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 10;
+
+  background: rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.navbar {
+  max-width: 1064px;
+
+  padding: 24px 0;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  a {
+    &:hover,
+    &:focus {
+      text-decoration: underline wavy;
+    }
+  }
+}
