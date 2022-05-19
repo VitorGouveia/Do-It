@@ -9,6 +9,8 @@ import { ScrollContext } from "../context/scroll";
 import { Header } from "../components/header";
 import { Section } from "../components/section";
 
+import AbstractBlue from "../../public/abstract-blue.jpg";
+
 import styles from "./home.module.scss";
 
 function opacityForBlock(sectionProgress: number, blockNo: number) {
@@ -90,6 +92,8 @@ const Home: NextPage = () => {
 
       <Section className={styles.heroSection}>
         <header className={styles.heading}>
+          <img src={AbstractBlue} alt="dwa" />
+
           <h1>
             Notes management
             <br /> made simple
